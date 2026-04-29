@@ -14,3 +14,12 @@ body {
   background-color: var(--color-black);
   color: #ffffff;
 }
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
