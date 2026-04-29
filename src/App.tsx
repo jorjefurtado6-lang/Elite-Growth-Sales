@@ -313,10 +313,10 @@ export default function App() {
 
           <motion.div {...fadeIn} className="flex justify-center mb-20">
             <motion.img 
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ y: 50, opacity: 0, scale: 0.95 }}
+              whileInView={{ y: 0, opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
               src="https://elitegrowthsales.com.br/wp-content/uploads/2025/02/Three_Books_Box-1-e1739362767301.png" 
               alt="Metodologia EGS" 
               className="max-w-full md:max-w-2xl h-auto drop-shadow-[0_20px_50px_rgba(211,175,55,0.15)]"
