@@ -378,7 +378,7 @@ export default function App() {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-[#D3AF37] text-xs font-bold tracking-[0.3em] uppercase mb-4">Prova Social</h2>
+            <h2 className="text-[#D3AF37] text-xs font-bold tracking-[0.3em] uppercase mb-4">Depoimentos</h2>
             <h2 className="text-3xl md:text-5xl font-light font-serif mb-6">
               Resultados de quem parou de <span className="text-[#D3AF37] italic font-serif">vender no escuro.</span>
             </h2>
