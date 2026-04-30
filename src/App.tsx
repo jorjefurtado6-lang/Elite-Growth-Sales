@@ -32,7 +32,7 @@ const Button = ({ children, className = '', href = WHATSAPP_LINK, variant = 'pri
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]"
         />
       )}
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 text-center">{children}</span>
       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform relative z-10" />
     </motion.a>
   );
@@ -81,7 +81,7 @@ export default function App() {
       <div className="fixed inset-0 border-[1px] border-[#D3AF37]/20 pointer-events-none z-50"></div>
       
       {/* HEADER */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0C0C0C]/90 backdrop-blur-md py-4 shadow-xl border-b border-[#D3AF37]/10' : 'bg-transparent py-6 border-b border-transparent'}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0C0C0C]/90 backdrop-blur-md py-4 shadow-xl border-b border-[#D3AF37]/10' : 'bg-gradient-to-b from-[#0a0a0a]/80 to-transparent py-6 border-b border-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -115,6 +115,7 @@ export default function App() {
             alt="Background" 
             className="w-full h-full object-cover" 
           />
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
         {/* Texture Overlay */}
@@ -158,7 +159,7 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                <Button className="w-full sm:w-auto px-8 py-4 !rounded-sm text-[12px] md:text-sm font-bold tracking-[0.1em]">
+                <Button className="w-full sm:w-auto px-8 py-4 !rounded-sm text-[11px] md:text-[11px] font-bold tracking-[0.1em]">
                   AGENDE UM DIAGNÓSTICO COMERCIAL
                 </Button>
               </motion.div>
@@ -228,45 +229,21 @@ export default function App() {
             ))}
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
-            <motion.div {...fadeIn} className="text-center lg:text-left bg-[#161616] border border-[#D3AF37]/20 p-8 md:p-12 rounded-lg">
-              <h3 className="text-2xl md:text-3xl font-light text-white mb-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div {...fadeIn} className="text-center bg-[#161616] border border-[#D3AF37]/20 p-8 md:p-12 rounded-lg shadow-2xl">
+              <h3 className="text-2xl md:text-3xl font-light text-white mb-4 leading-tight">
                 Isso não é falta de demanda. <span className="text-[#D3AF37] font-serif italic">É falta de estrutura comercial.</span>
               </h3>
-              <p className="text-lg text-gray-400 font-light">
+              <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto">
                 Enquanto o comercial funciona no improviso, o crescimento depende da sorte. Quando há um método, você passa a controlar o resultado.
               </p>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              animate={{ 
-                y: [0, -15, 0],
-                scale: [1, 1.02, 1],
-              }}
-              transition={{ 
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                opacity: { duration: 0.8 },
-                x: { duration: 0.8 }
-              }}
-              viewport={{ once: true }}
-              className="flex justify-center"
-            >
-              <img 
-                src="https://elitegrowthsales.com.br/wp-content/uploads/2026/04/mockup.png" 
-                alt="EGS Mockup" 
-                className="w-full max-w-[500px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(211,175,55,0.15)]"
-                referrerPolicy="no-referrer"
-              />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* SEÇÃO TRANSFORMAÇÃO */}
-      <section className="py-24 bg-[#0a0a0a] relative">
+      <section className="pt-[46px] pb-24 bg-[#0a0a0a] relative">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div {...fadeIn} className="mb-16">
             <h2 className="text-3xl md:text-5xl font-light font-serif max-w-2xl leading-tight">
@@ -308,7 +285,7 @@ export default function App() {
       </section>
 
       {/* SEÇÃO MÉTODO — OS 3 PILARES */}
-      <section className="py-24 bg-[#0C0C0C] relative border-y border-[#D3AF37]/10 overflow-hidden">
+      <section className="pt-[80px] pb-24 ml-[-5px] mt-[-63px] bg-[#0C0C0C] relative border-y border-[#D3AF37]/10 overflow-hidden">
          {/* Subtle background element */}
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D3AF37]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -372,11 +349,11 @@ export default function App() {
       </section>
 
       {/* SEÇÃO PROVA SOCIAL */}
-      <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+      <section className="mt-[-70px] py-24 bg-[#0a0a0a] relative overflow-hidden">
         {/* Decorative background element */}
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#D3AF37]/5 blur-[100px] rounded-full pointer-events-none"></div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <motion.div {...fadeIn} className="text-center mb-16">
             <h2 className="text-[#D3AF37] text-xs font-bold tracking-[0.3em] uppercase mb-4">Depoimentos</h2>
             <h2 className="text-3xl md:text-5xl font-light font-serif mb-6">
@@ -384,104 +361,90 @@ export default function App() {
             </h2>
           </motion.div>
 
-          {/* Testimonials Grid */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-8 mb-20"
-          >
-            {[
-              {
-                name: "Dra. Aline Pinho",
-                ig: "@draalinepinhoendocrino",
-                type: "Clínica Médica",
-                quote: "Mais que dobramos nosso faturamento em 180 Dias de aceleração comercial. (+1.4 MILHÕES)",
-                img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
-              },
-              {
-                name: "Thiago Rosa",
-                ig: "@othiago.rosa",
-                type: "Mentor de Médico",
-                quote: "Ao longo do trabalho com o Efra, faturamos ‘dois 7 Dígitos’ (+ 2 MILHÕES) apenas com o time comercial no perpétuo.",
-                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
-              },
-              {
-                name: "Rodrigo Mendanha",
-                ig: "@rodrigomendanhanutri",
-                type: "Mentor Nutricionista",
-                quote: "Depois da chegada do Efraym em minha empresa, a gente alavancou exponencialmente os nossos resultados, crescemos não apenas em faturamento, mas em Lucro.",
-                img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
-              },
-              {
-                name: "Lari Colebrusco",
-                ig: "@laricolebrusco",
-                type: "Hipnoterapeuta",
-                quote: "Durante a aceleração comercial a empresa bateu +R$ 1.3 MILHÕES em faturamento.",
-                img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
-              }
-            ].map((t, i) => (
-              <motion.div 
-                key={i}
-                variants={fadeIn}
-                className="bg-[#111111] border border-[#D3AF37]/10 p-8 rounded-sm hover:border-[#D3AF37]/30 transition-all duration-300 group shadow-2xl relative"
-              >
-                <div className="absolute top-4 right-8 text-[#D3AF37]/20">
-                  <MessageSquare size={40} />
-                </div>
-                
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-16 h-16 rounded-full border-2 border-[#D3AF37]/30 p-1 flex-shrink-0 group-hover:border-[#D3AF37] transition-colors overflow-hidden">
+          {/* Testimonials Carousel */}
+          <div className="relative group/carousel">
+            <motion.div 
+              className="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-12 px-4 -mx-4"
+              style={{ scrollBehavior: 'smooth' }}
+            >
+              {[
+                {
+                  name: "Dra. Aline Pinho",
+                  ig: "@draalinepinhoendocrino",
+                  type: "Clínica Médica",
+                  quote: "Mais que dobramos nosso faturamento em 180 Dias de aceleração comercial. (+1.4 MILHÕES)",
+                  img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=400"
+                },
+                {
+                  name: "Thiago Rosa",
+                  ig: "@othiago.rosa",
+                  type: "Mentor de Médico",
+                  quote: "Ao longo do trabalho com o Efra, faturamos ‘dois 7 Dígitos’ (+ 2 MILHÕES) apenas com o time comercial no perpétuo.",
+                  img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400"
+                },
+                {
+                  name: "Rodrigo Mendanha",
+                  ig: "@rodrigomendanhanutri",
+                  type: "Nutricionista",
+                  quote: "Depois da chegada do Efraym em minha empresa, a gente alavancou exponencialmente os nossos resultados, crescemos não apenas em faturamento, mas em Lucro.",
+                  img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400"
+                },
+                {
+                  name: "Lari Colebrusco",
+                  ig: "@laricolebrusco",
+                  type: "Hipnoterapeuta",
+                  quote: "Durante a aceleração comercial a empresa bateu +R$ 1.3 MILHÕES em faturamento.",
+                  img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400&h=400"
+                }
+              ].map((t, i) => (
+                <motion.div 
+                  key={i}
+                  variants={fadeIn}
+                  initial="initial"
+                  whileInView="whileInView"
+                  viewport={{ once: true }}
+                  className="flex-shrink-0 w-full md:w-[600px] snap-center bg-[#111111] border border-[#D3AF37]/10 p-8 md:p-12 rounded-sm hover:border-[#D3AF37]/30 transition-all duration-500 group shadow-2xl relative"
+                >
+                  <div className="absolute top-8 right-12 text-[#D3AF37]/10">
+                    <MessageSquare size={60} />
+                  </div>
+                  
+                  <div className="flex flex-col md:flex-row gap-8 items-start md:items-center h-full">
+                    <div className="w-40 h-40 md:w-56 md:h-56 rounded-sm border border-[#D3AF37]/20 p-1 flex-shrink-0 group-hover:border-[#D3AF37]/50 transition-all duration-500 overflow-hidden bg-[#0a0a0a]">
                       <img 
                         src={t.img} 
                         alt={t.name}
-                        className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                         referrerPolicy="no-referrer"
                       />
                     </div>
-                    <div>
-                      <h4 className="text-white font-bold text-lg leading-tight">{t.name}</h4>
-                      <div className="flex flex-col">
-                        <span className="text-[#D3AF37] text-xs font-medium tracking-wide">{t.ig}</span>
-                        <span className="text-gray-500 text-[10px] uppercase tracking-widest mt-1">{t.type}</span>
+                    
+                    <div className="flex-1">
+                      <div className="mb-6">
+                        <h4 className="text-white font-bold text-2xl mb-1 tracking-tight">{t.name}</h4>
+                        <p className="text-[#D3AF37] text-sm font-medium tracking-wide mb-1">{t.ig}</p>
+                        <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em]">{t.type}</p>
+                      </div>
+                      
+                      <div className="relative">
+                        <span className="absolute -left-4 -top-2 text-[#D3AF37] text-4xl font-serif opacity-30 select-none">&ldquo;</span>
+                        <blockquote className="text-gray-300 italic font-light text-lg md:text-xl leading-relaxed">
+                          {t.quote}&rdquo;
+                        </blockquote>
                       </div>
                     </div>
                   </div>
-                  
-                  <blockquote className="text-gray-300 italic font-light text-lg leading-relaxed border-l-2 border-[#D3AF37]/30 pl-6 py-2">
-                    &ldquo;{t.quote}&rdquo;
-                  </blockquote>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Quick Stats Summary */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            {[
-              { value: "+40M", label: "Faturamento Gerado" },
-              { value: "+1.4M", label: "Recorde em 180 dias" },
-              { value: "+2M", label: "No perpétuo com time" },
-              { value: "Expansão", label: "Lucro e Previsibilidade" }
-            ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                variants={fadeIn}
-                className="bg-[#161616] border border-[#D3AF37]/5 p-6 rounded-sm text-center group hover:bg-[#D3AF37]/5 transition-all"
-              >
-                <div className="text-2xl font-bold text-[#D3AF37] mb-1">{stat.value}</div>
-                <div className="text-[10px] text-gray-500 uppercase tracking-widest">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+            
+            {/* Scroll indicators hint */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {[0, 1, 2, 3].map((dot) => (
+                <div key={dot} className="w-1.5 h-1.5 rounded-full bg-[#D3AF37]/20"></div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -515,7 +478,7 @@ export default function App() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative order-2 lg:order-1"
+              className="relative order-2 lg:order-1 mt-[50px]"
             >
               <div className="relative rounded-sm overflow-hidden aspect-[4/5] bg-[#111111] border border-[#D3AF37]/10">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#D3AF37]/20 to-transparent mix-blend-overlay z-10"></div>
@@ -561,16 +524,7 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="mt-10 pt-10 border-t border-white/10 grid grid-cols-2 gap-8">
-                <div>
-                  <div className="text-3xl font-bold text-[#D3AF37] mb-2">+R$ 40M</div>
-                  <div className="text-sm tracking-wide text-gray-400">Em faturamento gerado para clientes</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#D3AF37] mb-2">4 Anos</div>
-                  <div className="text-sm tracking-wide text-gray-400">De inteligência e aceleração comercial</div>
-                </div>
-              </div>
+
             </motion.div>
           </div>
         </div>
@@ -578,7 +532,7 @@ export default function App() {
 
       {/* SEÇÃO FAQ */}
       <section className="py-24 bg-[#0a0a0a]">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-6 mt-[-80px]">
           <motion.div {...fadeIn} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light font-serif">Perguntas <span className="text-[#D3AF37] font-serif italic">frequentes</span></h2>
           </motion.div>
@@ -627,7 +581,7 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl font-light font-serif text-white mb-8 leading-[1.1]">
+            <h2 className="text-4xl md:text-6xl font-light font-serif text-white mb-8 leading-[1.1] mt-[-70px]">
               Pare de depender de <span className="text-[#D3AF37] italic font-serif">sorte</span> para vender. Estruture um comercial que cresce com método.
             </h2>
             <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto">
@@ -676,7 +630,7 @@ export default function App() {
   );
 }
 
-function FaqItem({ question, answer, index }: { question: string, answer: string, index: number }) {
+function FaqItem({ question, answer, index }: { question: string, answer: string, index: number, key?: any }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
