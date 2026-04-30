@@ -107,75 +107,89 @@ export default function App() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative min-h-[100svh] flex items-center pt-24 overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div 
-          style={{ y: heroBgY, opacity: heroOpacity }}
-          className="absolute inset-0 z-0"
-        >
-          <picture>
-            <source media="(min-width: 768px)" srcSet="https://elitegrowthsales.com.br/wp-content/uploads/2026/04/Hero-desktop.png" />
-            <img 
-              src="https://elitegrowthsales.com.br/wp-content/uploads/2026/04/hero-mobile.png" 
-              alt="Elite Growth Sales Background" 
-              className="w-full h-full object-cover opacity-100 scale-110" 
-            />
-          </picture>
-          {/* Subtle Mobile-only overlay for legibility */}
-          <div className="absolute inset-0 bg-[#0C0C0C]/40 md:hidden"></div>
-        </motion.div>
+      <section className="relative min-h-[100svh] flex items-center pt-20 overflow-hidden">
+        {/* Background Layer */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://elitegrowthsales.com.br/wp-content/uploads/2025/02/BG.png" 
+            alt="Background" 
+            className="w-full h-full object-cover" 
+          />
+        </div>
+
+        {/* Texture Overlay */}
+        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0 opacity-40 md:opacity-100 pointer-events-none translate-x-1/4">
+          <img 
+            src="https://elitegrowthsales.com.br/wp-content/uploads/2025/02/Ellipse-9.svg" 
+            alt="Texture" 
+            className="w-full h-full object-contain" 
+          />
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-4xl relative text-left"
-          >
-            <div className="absolute top-0 left-0 w-64 h-64 bg-[#D3AF37]/10 blur-[120px] pointer-events-none"></div>
-            
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Content */}
             <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-[#D3AF37] text-xs font-semibold tracking-[0.2em] uppercase mb-6 flex items-center justify-start gap-2"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-2xl"
             >
-              <Target className="w-4 h-4" /> Consultoria de Inteligência Comercial
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="text-4xl md:text-6xl font-light font-serif leading-[1.2] mb-8 text-white"
+              >
+                Escala e <span className="text-[#D3AF37] italic font-serif">Previsibilidade</span> nas Vendas através de um processo de vendas assertivo.
+              </motion.h1>
+
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-xl"
+              >
+                Aumente sua taxa de conversão e acelere o faturamento da sua empresa através da <strong className="text-white font-semibold">estruturação de processos comerciais</strong>, implementação do método de gestão comercial e treinamento de time.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                <Button className="w-full sm:w-auto px-8 py-4 !rounded-sm text-[12px] md:text-sm font-bold tracking-[0.1em]">
+                  AGENDE UM DIAGNÓSTICO COMERCIAL
+                </Button>
+              </motion.div>
             </motion.div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-light font-serif leading-[1.1] mb-8"
-            >
-              Seu faturamento não cresce porque seu comercial ainda funciona no <span className="text-[#D3AF37] italic font-serif">improviso.</span>
-            </motion.h1>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-gray-400 text-lg md:text-2xl max-w-2xl leading-relaxed mb-12"
-            >
-              Em 90 dias, sua empresa passa a vender mais, vender mais caro e saber exatamente o que fazer para crescer todo a mês — com método, gestão e previsibilidade.
-            </motion.p>
-            
+            {/* Right Column: Character/Brand Visual */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex flex-col items-start gap-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="relative hidden lg:flex justify-end items-center h-[650px]"
             >
-              <Button className="w-[250px] md:w-[300px] shadow-[0_0_20px_rgba(211,175,55,0.3)]">
-                Agendar Diagnóstico Comercial Gratuito
-              </Button>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-[#D3AF37] animate-pulse"></div>
-                <span className="text-[10px] text-gray-500 uppercase tracking-widest">Estratégia para identificar gargalos imediatos</span>
+              <div className="relative w-full h-full flex items-center justify-center">
+                {/* Floating Logo Badge centered */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, type: "spring" }}
+                  className="z-20"
+                >
+                  <div className="w-48 h-48 rounded-full border border-[#D3AF37]/30 bg-[#0C0C0C]/20 backdrop-blur-md flex items-center justify-center p-8 shadow-[0_0_50px_rgba(211,175,55,0.1)]">
+                    <img 
+                      src="https://elitegrowthsales.com.br/wp-content/uploads/2026/04/logo-dourado.png" 
+                      alt="Badge Logo" 
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -311,17 +325,7 @@ export default function App() {
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="flex justify-center mb-20">
-            <motion.img 
-              initial={{ y: 50, opacity: 0, scale: 0.95 }}
-              whileInView={{ y: 0, opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              src="https://elitegrowthsales.com.br/wp-content/uploads/2025/02/Three_Books_Box-1-e1739362767301.png" 
-              alt="Metodologia EGS" 
-              className="max-w-full md:max-w-2xl h-auto drop-shadow-[0_20px_50px_rgba(211,175,55,0.15)]"
-            />
-          </motion.div>
+
 
           <motion.div 
             variants={staggerContainer}
@@ -368,32 +372,113 @@ export default function App() {
       </section>
 
       {/* SEÇÃO PROVA SOCIAL */}
-      <section className="py-24 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+        {/* Decorative background element */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#D3AF37]/5 blur-[100px] rounded-full pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light font-serif mb-6">Resultados de quem <span className="text-[#D3AF37] italic font-serif">parou de vender no escuro.</span></h2>
+            <h2 className="text-[#D3AF37] text-xs font-bold tracking-[0.3em] uppercase mb-4">Prova Social</h2>
+            <h2 className="text-3xl md:text-5xl font-light font-serif mb-6">
+              Resultados de quem parou de <span className="text-[#D3AF37] italic font-serif">vender no escuro.</span>
+            </h2>
           </motion.div>
 
+          {/* Testimonials Grid */}
           <motion.div 
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid md:grid-cols-2 gap-8 mb-20"
           >
             {[
-              { value: "+40%", label: "Faturamento em 3 meses", size: "text-4xl md:text-5xl" },
-              { value: "R$ 2.2K", label: "Aumento no ticket médio (de R$800)", size: "text-4xl md:text-5xl" },
-              { value: "Previsibilidade", label: "No fechamento mensal", size: "text-[27px]", extraClass: "ml-[-12px]" },
-              { value: "Ativação", label: "Base antiga recuperada com método", size: "text-[34px]" }
+              {
+                name: "Dra. Aline Pinho",
+                ig: "@draalinepinhoendocrino",
+                type: "Clínica Médica",
+                quote: "Mais que dobramos nosso faturamento em 180 Dias de aceleração comercial. (+1.4 MILHÕES)",
+                img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
+              },
+              {
+                name: "Thiago Rosa",
+                ig: "@othiago.rosa",
+                type: "Mentor de Médico",
+                quote: "Ao longo do trabalho com o Efra, faturamos ‘dois 7 Dígitos’ (+ 2 MILHÕES) apenas com o time comercial no perpétuo.",
+                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
+              },
+              {
+                name: "Rodrigo Mendanha",
+                ig: "@rodrigomendanhanutri",
+                type: "Mentor Nutricionista",
+                quote: "Depois da chegada do Efraym em minha empresa, a gente alavancou exponencialmente os nossos resultados, crescemos não apenas em faturamento, mas em Lucro.",
+                img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
+              },
+              {
+                name: "Lari Colebrusco",
+                ig: "@laricolebrusco",
+                type: "Hipnoterapeuta",
+                quote: "Durante a aceleração comercial a empresa bateu +R$ 1.3 MILHÕES em faturamento.",
+                img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200&h=200" // Placeholder
+              }
+            ].map((t, i) => (
+              <motion.div 
+                key={i}
+                variants={fadeIn}
+                className="bg-[#111111] border border-[#D3AF37]/10 p-8 rounded-sm hover:border-[#D3AF37]/30 transition-all duration-300 group shadow-2xl relative"
+              >
+                <div className="absolute top-4 right-8 text-[#D3AF37]/20">
+                  <MessageSquare size={40} />
+                </div>
+                
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-16 h-16 rounded-full border-2 border-[#D3AF37]/30 p-1 flex-shrink-0 group-hover:border-[#D3AF37] transition-colors overflow-hidden">
+                      <img 
+                        src={t.img} 
+                        alt={t.name}
+                        className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold text-lg leading-tight">{t.name}</h4>
+                      <div className="flex flex-col">
+                        <span className="text-[#D3AF37] text-xs font-medium tracking-wide">{t.ig}</span>
+                        <span className="text-gray-500 text-[10px] uppercase tracking-widest mt-1">{t.type}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <blockquote className="text-gray-300 italic font-light text-lg leading-relaxed border-l-2 border-[#D3AF37]/30 pl-6 py-2">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Quick Stats Summary */}
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {[
+              { value: "+40M", label: "Faturamento Gerado" },
+              { value: "+1.4M", label: "Recorde em 180 dias" },
+              { value: "+2M", label: "No perpétuo com time" },
+              { value: "Expansão", label: "Lucro e Previsibilidade" }
             ].map((stat, i) => (
               <motion.div 
                 key={i}
                 variants={fadeIn}
-                className="bg-[#111111] border border-[#D3AF37]/10 p-8 rounded-sm text-center group hover:border-[#D3AF37]/30 transition-colors shadow-xl"
+                className="bg-[#161616] border border-[#D3AF37]/5 p-6 rounded-sm text-center group hover:bg-[#D3AF37]/5 transition-all"
               >
-                <div className={`font-bold text-[#D3AF37] mb-4 group-hover:scale-110 transition-transform ${stat.size} ${stat.extraClass || ''}`}>{stat.value}</div>
-                <div className="text-gray-400 text-[10px] uppercase tracking-widest">{stat.label}</div>
+                <div className="text-2xl font-bold text-[#D3AF37] mb-1">{stat.value}</div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-widest">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
