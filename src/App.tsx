@@ -41,6 +41,7 @@ const Button = ({ children, className = '', href = WHATSAPP_LINK, variant = 'pri
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const containerRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -56,6 +57,89 @@ export default function App() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const scrollContainer = carouselRef.current;
+    if (!scrollContainer) return;
+
+    let intervalId: any;
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+
+    const autoScroll = () => {
+      if (isDown) return;
+      const { scrollLeft: currentScroll, scrollWidth, clientWidth } = scrollContainer;
+      
+      if (currentScroll + clientWidth >= scrollWidth - 20) {
+        scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollContainer.scrollBy({ left: clientWidth, behavior: 'smooth' });
+      }
+    };
+
+    const startInterval = () => {
+      intervalId = setInterval(autoScroll, 5000);
+    };
+
+    // Dragging Logic
+    const handleMouseDown = (e: MouseEvent) => {
+      isDown = true;
+      scrollContainer.style.scrollSnapType = 'none'; // Disable snapping while dragging
+      scrollContainer.style.scrollBehavior = 'auto'; // Instant movement while dragging
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+      clearInterval(intervalId);
+    };
+
+    const handleMouseLeave = () => {
+      if (!isDown) return;
+      isDown = false;
+      scrollContainer.style.scrollSnapType = 'x mandatory';
+      scrollContainer.style.scrollBehavior = 'smooth';
+      startInterval();
+    };
+
+    const handleMouseUp = () => {
+      if (!isDown) return;
+      isDown = false;
+      scrollContainer.style.scrollSnapType = 'x mandatory';
+      scrollContainer.style.scrollBehavior = 'smooth';
+      startInterval();
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 1.5; // Adjusted scroll speed
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    };
+
+    startInterval();
+
+    const handleMouseEnter = () => clearInterval(intervalId);
+    const handleMouseLeaveAuto = () => {
+      if (!isDown) startInterval();
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeaveAuto);
+    scrollContainer.addEventListener('mousedown', handleMouseDown as any);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+    scrollContainer.addEventListener('mouseup', handleMouseUp);
+    scrollContainer.addEventListener('mousemove', handleMouseMove as any);
+
+    return () => {
+      clearInterval(intervalId);
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeaveAuto);
+      scrollContainer.removeEventListener('mousedown', handleMouseDown as any);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+      scrollContainer.removeEventListener('mouseup', handleMouseUp);
+      scrollContainer.removeEventListener('mousemove', handleMouseMove as any);
+    };
   }, []);
 
   const fadeIn = {
@@ -364,7 +448,8 @@ export default function App() {
           {/* Testimonials Carousel */}
           <div className="relative group/carousel">
             <motion.div 
-              className="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-12 px-4 -mx-4"
+              ref={carouselRef}
+              className="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-12 px-4 -mx-4 cursor-grab active:cursor-grabbing"
               style={{ scrollBehavior: 'smooth' }}
             >
               {[
@@ -403,7 +488,7 @@ export default function App() {
                   initial="initial"
                   whileInView="whileInView"
                   viewport={{ once: true }}
-                  className="flex-shrink-0 w-full md:w-[600px] snap-center bg-[#111111] border border-[#D3AF37]/10 p-8 md:p-12 rounded-sm hover:border-[#D3AF37]/30 transition-all duration-500 group shadow-2xl relative"
+                  className="flex-shrink-0 w-full md:w-[600px] snap-center bg-[#111111] border border-[#D3AF37]/10 p-8 md:p-12 rounded-sm hover:border-[#D3AF37]/30 transition-all duration-500 group shadow-2xl relative select-none"
                 >
                   <div className="absolute top-8 right-12 text-[#D3AF37]/10">
                     <MessageSquare size={60} />
@@ -414,7 +499,8 @@ export default function App() {
                       <img 
                         src={t.img} 
                         alt={t.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                        draggable="false"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 pointer-events-none"
                         referrerPolicy="no-referrer"
                       />
                     </div>
