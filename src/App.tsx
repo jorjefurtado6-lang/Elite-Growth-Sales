@@ -458,28 +458,28 @@ export default function App() {
                   ig: "@draalinepinhoendocrino",
                   type: "Clínica Médica",
                   quote: "Mais que dobramos nosso faturamento em 180 Dias de aceleração comercial. (+1.4 MILHÕES)",
-                  img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=400"
+                  img: "https://lh3.googleusercontent.com/d/11Cz40O3jru2Y8HKNKlQykkTFu1vvFPvR"
                 },
                 {
                   name: "Thiago Rosa",
                   ig: "@othiago.rosa",
                   type: "Mentor de Médico",
                   quote: "Ao longo do trabalho com o Efra, faturamos ‘dois 7 Dígitos’ (+ 2 MILHÕES) apenas com o time comercial no perpétuo.",
-                  img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400"
+                  img: "https://lh3.googleusercontent.com/d/1emJ-cNY2g46o6AcVmLMqJ43Kun6N7xhw"
                 },
                 {
                   name: "Rodrigo Mendanha",
                   ig: "@rodrigomendanhanutri",
                   type: "Nutricionista",
                   quote: "Depois da chegada do Efraym em minha empresa, a gente alavancou exponencialmente os nossos resultados, crescemos não apenas em faturamento, mas em Lucro.",
-                  img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400"
+                  img: "https://lh3.googleusercontent.com/d/192-vTouVoLgzYSjEYgYKIkLhxAOcNB1C"
                 },
                 {
                   name: "Lari Colebrusco",
                   ig: "@laricolebrusco",
                   type: "Hipnoterapeuta",
                   quote: "Durante a aceleração comercial a empresa bateu +R$ 1.3 MILHÕES em faturamento.",
-                  img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400&h=400"
+                  img: "https://lh3.googleusercontent.com/d/1uGAFXaWvp_sYuOZpcHMUqO6nuV_xp4Zh"
                 }
               ].map((t, i) => (
                 <motion.div 
@@ -530,6 +530,55 @@ export default function App() {
                 <div key={dot} className="w-1.5 h-1.5 rounded-full bg-[#D3AF37]/20"></div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* SEÇÃO CLIENTES — CARROSSEL INFINITO */}
+      <section className="pb-24 bg-[#0a0a0a] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-12">
+          <motion.div {...fadeIn} className="text-center">
+            <h3 className="text-[#D3AF37] text-[10px] font-bold tracking-[0.3em] uppercase mb-4">Empresas & Especialistas</h3>
+            <h2 className="text-2xl md:text-3xl font-light font-serif">Alguns dos que <span className="text-[#D3AF37] italic">confiam</span> em nosso método</h2>
+          </motion.div>
+        </div>
+
+        <div className="relative flex overflow-hidden group">
+          <div 
+            className="flex whitespace-nowrap gap-8 py-4 animate-marquee pause-on-hover"
+          >
+            {/* Sequence of clients duplicated for perfect infinite loop */}
+            {[...Array(4)].map((_, groupIndex) => (
+              <div key={groupIndex} className="flex gap-8 px-4">
+                {[
+                  { name: "Ádamo Peçanha", handle: "@adamopecanha", id: "1SVu6wI2JDkmH37IFuj2KQXDApxA5xy9P" },
+                  { name: "Clínica Lipo90", handle: "@lipo90manaus", id: "1QqS4xxilhDwPUiqR6IPyq3_Hb6MWv0kH" },
+                  { name: "Dígitos Company", handle: "@thedigitoscco", id: "1O-9bPNxdTGDoc_NAPiVEA7ocSjdUaJAI" },
+                  { name: "Hospital Querubim", handle: "@querubimvet24h", id: "1JtmjJqhOY5PKaTW2Aj_tB7KONuRTJYZu" },
+                  { name: "Laboratório GALILEI", handle: "@galileivet", id: "1JtmjJqhOY5PKaTW2Aj_tB7KONuRTJYZu" },
+                  { name: "Natália Castro", handle: "@clinicanataliacastro", id: "1ap6ZBGEp3RCzL9Rr-px9a8_DZ9Sz7Rv_" }
+                ].map((client, i) => (
+                  <div 
+                    key={`${groupIndex}-${i}`}
+                    className="flex items-center gap-4 bg-[#111111]/50 border border-[#D3AF37]/5 px-6 py-4 rounded-full hover:bg-[#161616] hover:border-[#D3AF37]/20 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D3AF37]/30 flex-shrink-0 bg-[#0C0C0C]">
+                      <img 
+                        src={`https://lh3.googleusercontent.com/d/${client.id}`} 
+                        alt={client.name}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        draggable="false"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-white text-xs font-bold tracking-wide">{client.name}</span>
+                      <span className="text-[#D3AF37] text-[10px] font-medium">{client.handle}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
